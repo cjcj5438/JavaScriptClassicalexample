@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Accessing numbers in table</title>
+</head>
+<body>
+<table id="table1">
+   <tr>
+      <td>Washington</td><td>145</td>
+   </tr>
+   <tr>
+      <td>Oregon</td><td>233</td>
+   </tr>
+   <tr>
+      <td>Missouri</td><td>833</td>
+   </tr>
+</table>
+<script type="text/javascript">
+
+   var sum = 0;
+
+   // use querySelector to find all second table cells
+   //querySelectorAll:按照文档顺序返回指定元素,匹配选择器的元素集合,
+   //("td + td")这是兄弟选择器,取后一个td
+   var cells = document.querySelectorAll("td + td");
+console.log(cells);
+   for (var i = 0; i < cells.length; i++)
+      sum+=parseFloat(cells[i].firstChild.data);
+
+   // now add sum to end of table
+   //在页面上创建标签,很多时候都是这么创建的
+   var newRow = document.createElement("tr");
+
+   // first cell
+   var firstCell = document.createElement("td");
+   //创建文本节点
+   var firstCellText = document.createTextNode("Sum:");
+   //appendChild//插入元素
+   firstCell.appendChild(firstCellText);
+   newRow.appendChild(firstCell);
+
+   // second cell with sum
+   var secondCell = document.createElement("td");
+   var secondCellText = document.createTextNode(sum);
+   secondCell.appendChild(secondCellText);
+   newRow.appendChild(secondCell);
+
+   // add row to table
+   document.getElementById("table1").appendChild(newRow);
+
+</script>
+</body>
+</html>
+
