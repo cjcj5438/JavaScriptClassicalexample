@@ -27,7 +27,12 @@ console.log(cells);
    for (var i = 0; i < cells.length; i++)
       sum+=parseFloat(cells[i].firstChild.data);
 
-   // now add sum to end of table
+
+   /**
+    * 下面的步骤 在dom上添加元素
+    * @type {Element}
+    */
+           // now add sum to end of table
    //在页面上创建标签,很多时候都是这么创建的
    var newRow = document.createElement("tr");
 
